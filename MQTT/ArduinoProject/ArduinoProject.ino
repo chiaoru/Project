@@ -20,7 +20,7 @@ const char broker[]="broker.MQTTGO.io"; //MQTT Broker 郵局
 int port = 1883;
 const char topic[]="KT/home";
 
-char token[] = "v3jiTzItqPaRN6NDPY6mzrvzXQAUXeGxDmKI6ZcUWBi";
+char token[] = "";
 
 void setup() {
   // put your setup code here, to run once:

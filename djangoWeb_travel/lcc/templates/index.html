@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	首頁
+{% endblock %}
+
+{% block css %} 
+<link rel="stylesheet" href="/static/css/index.css" />
+{% endblock %}
+
+{% block mainarea %}
+
+<div id='photo'>
+	<div class="row">
+		{% for photo in photos %}
+			{% if photo.image %}
+				<div class="col-md-4">
+					<div class="imgArea">
+						<img src="{{photo.image.url}}" class="img-top">
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<div id='share'>
+		<h3>分享你的照片！</h3>
+		<form action="" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="form-row">
+				<div class="form-group cd-md-4">
+					{{form.image}}
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group cd-md-4">
+					<input type="submit" value="上傳">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

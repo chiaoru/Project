@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		{% block title %}
+		{% endblock %}
+	</title>
+	<link rel="stylesheet" href='/static/css/base.css' />
+	<link rel='icon' href='/static/images/favicon.ico' />
+	{% block css %} 
+	{% endblock %}
+
+	{% block js %} 
+	{% endblock %}
+</head>
+<body>
+
+	<div id='wrapper'>
+		<div id='banner'>
+			<div id='logo'>
+				<img src='/static/images/logo.jpg'>
+			</div>
+
+			<div id='member'>
+				
+					{% if request.session.lcc == 'good' %}
+					<ul style="margin-left: 70%;">
+						<li><a href='/membercenter/'>會員中心</a></li>
+						<li><a href='/myorder'>我的訂單</a></li>
+						<li><a href='/cart'>購物車</a></li>
+						<li><a href='/logout'>登出</a></li>
+					</ul>
+					{% else %}
+					<ul style="margin-left: 80%;">
+						<li><a href='/login'>登入</a></li>
+						<li><a href='/register'>註冊</a></li>
+					</ul>
+					{% endif %}
+				
+			</div>
+		</div>
+
+		<div id='menu'>
+			<ul>
+				<li><a href="/gallery/">首頁</a></li>
+				<li><a href="/news/">新聞</a></li>
+				<li><a href="/tours/">旅遊團</a></li>
+				<li><a href="/about/">關於我</a></li>
+				<li><a href="/contact/">聯絡我們</a></li>
+			</ul>
+		</div>
+
+		<div id='content'>
+			{% block mainarea %}
+			{% endblock %}
+		</div>
+		
+	</div>
+
+	<div id='footer'>
+			Travel Info. LCC Learn Django.
+	</div>
+
+</body>
+</html>

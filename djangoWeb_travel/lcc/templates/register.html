@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}
+會員註冊
+{% endblock %}
+
+{% block css %}
+<link href="/static/css/register.css" rel="stylesheet" >
+{% endblock %}
+
+{% block js %}
+
+	<script>
+		function checkPwd(){
+			var p  = document.getElementsByName("pwd")[0].value;
+			var p2 = document.getElementsByName("repwd")[0].value;
+			if (p == p2){
+				return true;
+			}else{
+				alert("密碼不匹對，請確認！")
+				return false;
+			}
+		}
+
+	</script>
+
+{% endblock %}
+
+{% block mainarea %}
+
+
+	<div style="margin-top: 40px"></div>
+
+	<div id="register">
+		<p class="subject">會員註冊</p>
+
+		<form class="contact_form" action="" method="post" onsubmit="return checkPwd()">
+			{% csrf_token %}
+			<div class="form-group">
+				<label>姓名</label>
+				<input type="text" name="uName" class="form-control" required />
+			</div>
+
+			<div class="form-group">
+				<label>Email</label>
+				<input type="email" name="uEmail" class="form-control" required />
+			</div>
+
+			<div class="form-group">
+				<label>密碼</label>
+				<input type="password" name="pwd" class="form-control" required />
+			</div>
+
+			<div class="form-group">
+				<label>再確認一次密碼</label>
+				<input type="password" name="repwd" class="form-control" required />
+			</div>
+
+			<div class="form-group">
+				<label>性別</label>
+				<input type="radio" name="sex" value="F" checked />女生
+				<input type="radio" name="sex" value="M"  />男生
+				<input type="radio" name="sex" value="M"  />不想說
+			</div>
+
+			<div class="form-group">
+				<label>電話</label>
+				<input type="text" name="mobile" class="form-control" required />
+			</div>
+
+			<div class="form-group">
+				<label>生日</label>
+				<input type="text" name="birthday" placeholder="YYYY-MM-DD" class="form-control" required />
+			</div>
+
+			<div class="form-group">
+				<label>地址</label>
+				<input type="text" name="address" class="form-control" required />
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn_submit">註冊</button>
+			</div>
+
+		</form>
+
+{% endblock %}

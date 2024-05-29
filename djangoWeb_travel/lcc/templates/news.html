@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	新聞
+{% endblock %}
+
+{% block css %} 
+<link rel="stylesheet" href="/static/css/news.css" />
+{% endblock %}
+
+{% block mainarea %}
+
+	<div style="height: 30px;"></div>
+
+	<div id='search' style="margin-left: 17%; width: 50%;font-size: 20px; color:#002665">
+			<form action="/news" method="get">
+				新聞平台：<select name="platform" style="border-radius: 8px; height: 22px;"> <!-- 用下拉式選單來選擇想要的新聞平台 -->
+							<option value="三立新聞">三立新聞</option>
+							<option value="東森新聞">東森新聞</option>
+							<option value="TVBS">TVBS</option>
+							<option value="SwissInfo">SwissInfo</option>
+						</select>
+						<input type="submit" style="color:b23e25; font-size: 16px; cursor: pointer;" value="查詢" />
+
+			</form>			
+	</div>
+
+	{% for item in allnews %}
+
+		<div class="newsInfo">
+			<div class="newsImg">
+				<img src='{{item.img}}'>
+			</div>
+
+			<div class="newsContent">
+				<p>{{item.platform}}</p>
+				<a href="{{item.link}}" target="_blank" style="color:#000000"><p><strong>{{item.title}}</strong></p></a>
+				<span>{{item.content}}</span>
+			</div>
+		</div>
+	{% endfor %}
+
+	<div style="clear:both; height: 50px; text-align: center; line-height: 50px;">
+		{% if allnews.has_previous %}
+			<a href='?page={{allnews.previous_page_number}}' style="text-decoration: none; color: #6c1912;">上一頁</a>
+		{% endif %}
+
+		{% if allnews.has_next %}
+			<a href='?page={{allnews.next_page_number}}' style="text-decoration: none; color: #6c1912;">下一頁</a>
+		{% endif %}	
+	</div>
+
+{% endblock %}

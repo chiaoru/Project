@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block titleblock %}
+	我的訂單
+{% endblock %}
+
+{% block css %}
+<link rel='stylesheet' href='/static/css/cart.css'>
+{% endblock %}
+
+{% block mainarea %}
+
+	<div style='margin-top:50px;'></div>
+	<div id='cartDiv'>
+		<p class='title'>我的訂單列表</p>
+		{% csrf_token %}
+		<table width="90%" border="0" align="center" cellpadding="4" cellspacing="0">
+			<tr>
+				<th width="60" align="center">訂單編號</th>
+				<th width="80" align="center">訂單日期</th>
+				<th width="80" align="center">付款金額</th>
+				<th width="80" align="center">付款方式</th>
+			</tr>
+
+			{% for unit in order %}
+				<tr>
+					<td align="center">
+						<a href="/cartordercheck/?orderid={{unit.id}}&guestemail={{request.session.cusEmail}}">{{unit.id}}</a></td>
+					<td align="center">{{unit.create_date}}</td>
+					<td align="center">{{unit.grandtotal}}</td>
+
+					{% if unit.paytype == '轉帳' %}
+						<td align="center">{{unit.paytype}}
+							<a href="/reportBank/?orderid={{unit.id}}&guestemail={{request.session.cusEmail}}">後五碼</a></td>
+					{% else %}
+						<td align="center">{{unit.paytype}}</td>
+					{% endif %}
+
+
+				</tr>
+			{% endfor %}
+
+		</table>
+	
+	</div>
+
+{% endblock %}

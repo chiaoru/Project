@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block titleblock %}
+	訂單明細
+{% endblock %}
+
+{% block css %}
+<link rel='stylesheet' href='/static/css/cart.css'>
+{% endblock %}
+
+{% block mainarea %}
+
+	<div style='margin-top:50px;'></div>
+	<div id='cartDiv'>
+		<p class='title'>訂單明細</p>
+
+		{% if nosearch == 1 %}
+			<form action="/cartordercheck/" method="get"> 
+				
+				<table border="0" align="center" cellpadding="10" cellspacing="0">
+					<tr>
+						<td>訂單編號</td>
+						<td><input type="text" name="orderid" /></td>
+					</tr>
+
+					<tr>
+						<td>Email</td>
+						<td><input type="text" name="guestemail" required /></td>
+					</tr>
+
+					<tr>
+						<td colspan="2"><button type="submit">查詢</button></td>
+					</tr>
+				</table>
+			</form>
+		{% elif notfound == 1 %}
+
+			<div class="message">找不到您的訂單，請重新查詢或洽克服</div>
+			<form action="/cartordercheck/" method="get"> 
+				
+				<table border="0" align="center" cellpadding="10" cellspacing="0">
+					<tr>
+						<td>訂單編號</td>
+						<td><input type="text" name="orderid" /></td>
+					</tr>
+
+					<tr>
+						<td>Email</td>
+						<td><input type="text" name="guestemail" required /></td>
+					</tr>
+
+					<tr>
+						<td colspan="2"><button type="submit">查詢</button></td>
+					</tr>
+				</table>
+			</form>
+		{% else %}
+
+			<table width="90%" border="0" align="center" cellpadding="4" cellspacing="0">
+				<tr>
+					<th align="left">商品名稱</th>
+					<th width="80" align="center">單價</th>
+					<th width="80" align="center">數量</th>
+					<th width="80" align="center">金額</th>
+				</tr>
+
+				<!-- 商品 -->
+
+				{% for unit in details %}
+					<tr>
+						<td align='center'>{{unit.pname}}</td>
+						<td align='center'>{{unit.unitprice}}</td>
+						<td align='center'>{{unit.quantity}}</td>
+						<td width="100" align="center"><strong>${{unit.dtotal}}</strong></td>
+
+					</tr>
+				{% endfor %}
+
+				<!-- 小計 -->
+
+				<tr>
+					<!-- colspan 合併欄位 -->
+					<td colspan="3" align="left" bgcolor="#fff">小計</td>
+					<td align="center" bgcolor="#fff">${{order.subtotal}}</td>
+				</tr>
+
+				<!-- 運費 -->
+				<tr>
+					<td colspan="3" align="left" bgcolor="#fff">運費</td>
+					<td align="center" bgcolor="#fff">{{order.shipping}}</td>
+				</tr>
+
+				<!-- 總計 -->
+				<tr>
+					<td colspan="3" align="left" bgcolor="#fff">總計</td>
+					<td align="center" bgcolor="#fff">${{order.grandtotal}}</td>
+				</tr>
+
+
+			</table>
+
+			<hr> <!-- 分隔線 -->
+				<p class='subject' align="center" style="margin-right: 10%;">訂購者資料</p>
+				<table width="90%" border="0" align="center" cellpadding="4" cellspacing="0">
+					<tr>
+						<th width="100" align="right">資訊</th>
+						<th width="100" align="left">內容</th>
+					</tr>
+
+					<tr>
+						<td width="100" align="right"><strong>姓名</strong></td>
+						<td>{{order.customename}}</td>
+					</tr>
+
+					<tr>
+						<td width="100" align="right"><strong>電話</strong></td>
+						<td>{{order.customephone}}</td>
+					</tr>
+
+					<tr>
+						<td width="100" align="right"><strong>Email</strong></td>
+						<td>{{order.customeemail}}</td>
+					</tr>
+
+					<tr>
+						<td width="100" align="right"><strong>地址</strong></td>
+						<td>{{order.customeaddress}}</td>
+					</tr>
+
+					<tr>
+						<td width="100" align="right"><strong>付款方式</strong></td>
+						<td>
+							{{order.paytype}}
+						</td>
+					</tr>
+
+
+
+				</table>
+		{% endif %}
+	</div>
+{% endblock %}

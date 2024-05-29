@@ -1,0 +1,47 @@
+#register{
+	margin-left: 30%;
+	
+
+}
+
+#register p{
+	padding-left: 17%;
+	font-size: 30px;
+	font-weight: bold;
+	
+}
+
+.contact_form{
+	border: 2.5px solid #ccc;
+	border-radius: 5px;
+	padding: 0.6em 0.6em;
+	font-size: 100%;
+	line-height: 1.15;
+	width: 450px;
+	margin-bottom: 60px;
+
+}
+
+.form-control{
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 0.6em 0.6em;
+	font-size: 80%;
+	line-height: 1.25;
+	width: 400px;
+	
+	
+}
+
+.form-group{
+	margin: 2%;
+}
+
+.btn_submit{
+	background-color: #234C8E;
+	color: #ffffff;
+	padding: 0.5em 1em;
+	border: transparent; /* transparent 邊框線整個透明 */
+	border-radius: 5px;
+	font-size: 18px;
+}

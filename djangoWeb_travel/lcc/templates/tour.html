@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}
+旅遊
+{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/tour.css" />
+{% endblock %}
+
+{% block mainarea %}
+
+<div id='travel'>
+	<div id='leftArea'>
+		<div id='region'>
+			<ul>
+				<form class="formSearch" action="/tours" method="get">
+					<p style="width: 100px;font-size: 25px; font-weight: bold; padding-left: 25px;">旅遊地區</p>
+					<li><button type="submit" name="tour" value="全區">全區</button></li>
+					<li><button type="submit" name="tour" value="日本">日本</button></li>
+					<li><button type="submit" name="tour" value="韓國">韓國</button></li>
+					<li><button type="submit" name="tour" value="泰國">泰國</button></li>
+					<li><button type="submit" name="tour" value="歐洲">歐洲</button></li>
+					<li><button type="submit" name="tour" value="馬新">馬新</button></li>
+					<li><button type="submit" name="tour" value="紐澳">紐澳</button></li>
+					<li><button type="submit" name="tour" value="中東">中東</button></li>
+				</form>
+			</ul>
+		</div>
+
+		<hr>
+		<div id='platform'>
+			<ul>
+				<form class="formSearch" action="" method="get">
+					<p style="width: 100px; font-size: 25px; font-weight: bold; padding-left: 25px;">旅遊平台</p>
+					<li><button type="submit" name="tour" value="全部">全部</button></li>
+					<li><button type="submit" name="tour" value="東南旅遊">東南旅遊</button></li>
+					<li><button type="submit" name="tour" value="易遊網">易遊網</button></li>
+					<li><button type="submit" name="tour" value="東森旅遊">東森旅遊</button></li>
+				</form>
+			</ul>
+		</div>
+	</div>
+
+	<div id="rightArea">
+
+		<div style="height: 30px;"></div>
+
+		<form class="formSearch" action="/tours" method="get">
+			<label for="tour" style="color:002665">旅遊查詢</label>
+			<input type="text" id="tour" name="tour" size="15" style="border-radius: 8px; height: 22px;" />
+			<button type="submit" style="color:b23e25; font-size: 16px; cursor: pointer;">查詢</button>
+		</form>
+
+		<div style="height: 15px;"></div>
+
+
+	  {% for item in alltours %}	
+
+		<div class="info">
+			<a href="{{item.link}}" target="_blank">
+				<img src="{{item.img}}">
+				<p style="text-align: left;">{{item.title}}</p>
+				<p style="text-align: left; padding-top: 20%;">出發日期：{{item.depDate}}</p>
+				<p style="text-align: center; margin-right: 1.5%; padding-top: 3px;font-weight: bold;">NT: {{item.price}}</p>
+
+				<div class="cart_block">
+					<a href="/addtocart/add/{{item.id}}/"><img src="/static/images/cart.png"></a>
+					
+				</div>
+			</a>
+		</div>	
+
+	  {% endfor %}
+
+	</div>
+
+
+  <div style="clear:both; height: 50px; text-align: center; line-height: 50px;">
+  	{% if alltours.has_previous %}
+
+  		<a href="?page={{alltours.previous_page_number}}" style="text-decoration: none; color: #6c1912;">上一頁</a>
+
+  	{% endif %}
+
+  	{% if alltours.has_next %}
+
+  		<a href="?page={{alltours.next_page_number}}" style="text-decoration: none; color: #6c1912;">下一頁</a>
+
+  	{% endif %}
+
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+

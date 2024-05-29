@@ -1,0 +1,13 @@
+.imgArea img{
+	float: left;
+	width: 360px;
+	height: 250px;
+	border: 0;
+}
+
+#share{
+	clear: both;
+	margin-left: 42%;
+	padding-top: 1%;
+	padding-bottom: 2%;
+}

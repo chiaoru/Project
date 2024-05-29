@@ -1,0 +1,31 @@
+#about{
+	clear: both;
+	margin-top: 8%;
+	height: 489px;
+}
+#leftArea{
+	width:30%;
+	float: left;
+	padding-top: 1%;
+	margin-left: 18%;
+	margin-right: 2%;
+	border-right: 1px solid #ccc;
+	
+}
+
+#leftArea img{
+	width: 80%;
+	
+	border-radius: 80px;
+	
+}
+
+#rightArea{
+
+	padding-left: 2%;
+	padding-top: 6%;
+}
+
+#bottomArea{
+	clear: both;
+}

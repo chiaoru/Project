@@ -1,0 +1,78 @@
+#wrapper{}
+
+#banner{
+	width: 100%;
+	height: 80px;
+	background-color: #ffffff;
+}
+
+#logo{
+	float: left;
+	margin-left: 1em;
+}
+
+#logo img{
+	height: 95px;
+}
+
+#member ul{
+	line-height: 90px;
+}
+
+#member li{
+	list-style: none;
+	float: left;
+	padding-left: 0.5em;
+	font-size: 22px;
+}
+
+#member a{
+	text-decoration: none;
+	font-weight: bold;
+	color: #308BAE;
+}
+
+#menu{
+	width: 100%;
+	height: 40px;
+	background-color: #6A4028;
+	line-height: 40px;
+}
+
+#menu ul{
+	padding-left: 24%;
+}
+
+#menu li{
+	list-style: none;
+	float: left;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	font-size: 22px;
+}
+
+#menu a{
+	text-decoration: none;
+	font-weight: bold;
+	color: #FB966E;
+}
+
+#content{
+	width: 100%;
+	min-height: 400px;
+}
+
+body{
+	margin: 0;
+	font-size: 18px;
+	font-family: 微軟正黑體, sans-serif, initial;
+}
+
+#footer{
+	width: 100%;
+	height: 60px;
+	background-color: #724832;
+	color: #D7C4BB;
+	text-align: center;
+	line-height: 60px;
+}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+購物車內容
+{% endblock %}
+
+{% block css %}
+<link href="/static/css/cart.css" rel="stylesheet" >
+{% endblock %}
+
+{% block mainarea %}
+	
+	<div style="margin-top: 100px;"></div>
+
+	<div id="maindiv">
+		<p class="title">訂購完成資訊</p>
+		<p class="subject">非常感謝您的購買，我們會盡快處理您的訂單</p>
+		<p class="desc" style="padding-left:5%">親愛的 <strong>{{name}}</strong> (先生/小姐)，訂單已完成</p>
+		<p class="desc" style="padding-left:5%">訂單編號為 <strong style="color: red;">{{orderid}}</strong></p>
+		<p class="desc" style="padding-left:5%"><a href="/cartordercheck/?orderid={{orderid}}&guestemail={{email}}">訂單詳細內容</a></p>
+	</div>
+
+	<table border="0" style="padding-left: 40%;" align="center" cellpadding="10" cellspacing="0">
+			<tr>
+				<td><input class='code' type="button" value="繼續找旅遊" style="font-size: 18px;" onClick="window.location='/tours/'" /></td>
+				
+			</tr>
+	</table>
+
+{% endblock %}
